@@ -1,0 +1,40 @@
+name: Deploy Subscriber 2 Azure Function
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  AZURE_FUNCTIONAPP_NAME: 'mySubscriber2FunctionApp' 
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './subscriber2'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Set up Python Environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Deploy Azure Function App
+      uses: Azure/functions-action@v1
+      with:
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+        publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+
+    - name: Set Azure Function App Environment Variables
+      run: |
+        az functionapp config appsettings set --resource-group <your-resource-group> --name ${{ env.AZURE_FUNCTIONAPP_NAME }} --settings "ServiceBusConnection=${{ secrets.ServiceBusConnection }}" "STORAGE_CONNECTION_STRING=${{ secrets.STORAGE_CONNECTION_STRING }}" "STORAGE_CONTAINER_NAME=orders-container" "FUNCTIONS_WORKER_RUNTIME=python"
