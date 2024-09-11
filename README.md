@@ -4,8 +4,7 @@ This repository demonstrates how to implement the **Publisher-Subscriber Pattern
 
 ## 🏗️ Architecture Overview
 
-![image](https://github.com/user-attachments/assets/e2f2ab41-9f87-41d6-8aa4-37c1875583ca)
-
+![image](https://github.com/user-attachments/assets/e80d4eed-068c-43ac-8259-4cb15dcabc77)
 
 ```mermaid
 graph TD
