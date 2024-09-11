@@ -4,6 +4,9 @@ This repository demonstrates how to implement the **Publisher-Subscriber Pattern
 
 ## 🏗️ Architecture Overview
 
+![image](https://github.com/user-attachments/assets/e2f2ab41-9f87-41d6-8aa4-37c1875583ca)
+
+
 ```mermaid
 graph TD
     Publisher["Publisher (Azure Function or App Service)"] --> |"Publish Message"| ServiceBusTopic["Topic on Azure Service Bus"]
