@@ -9,11 +9,15 @@ This repository demonstrates how to implement the **Publisher-Subscriber Pattern
 
 ```mermaid
 graph TD
+graph TD
     Publisher["Publisher (Azure Function or App Service)"] --> |"Publish Message"| ServiceBusTopic["Topic on Azure Service Bus"]
     ServiceBusTopic --> |"Subscription 1"| Subscriber1["Subscriber 1 (Azure Function)"]
     ServiceBusTopic --> |"Subscription 2"| Subscriber2["Subscriber 2 (Azure Function)"]
     Subscriber1 --> |"Process Message"| CosmosDB["Azure Cosmos DB Data Store"]
     Subscriber2 --> |"Process Message"| StorageAccount["Azure Storage Account"]
+    Publisher --> |"Send Logs"| AppInsights["Application Insights"]
+    Subscriber1 --> |"Send Logs"| AppInsights["Application Insights"]
+    Subscriber2 --> |"Send Logs"| AppInsights["Application Insights"]
 ```
 
 ### Components of the Architecture
