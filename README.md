@@ -1,4 +1,4 @@
-# Azure Publisher-Subscriber Pattern Implementation on Azure
+# Azure Publisher-Subscriber Pattern Implementation
 
 This repository demonstrates how to implement the **Publisher-Subscriber Pattern** using Azure services, including Azure Service Bus, Azure Functions, Azure Cosmos DB, and Azure Storage Account. The project includes Bicep templates for infrastructure deployment, Python code for the publisher and subscribers, and GitHub Actions workflows for continuous integration and deployment.
 
